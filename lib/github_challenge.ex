@@ -1,9 +1,5 @@
 defmodule GithubChallenge do
-  @moduledoc """
-  GithubChallenge keeps the contexts that define your domain
-  and business logic.
+  alias GithubChallenge.Github.Client
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
-  """
+  defdelegate get_github(username), to: Client, as: :get_repo_info
 end
