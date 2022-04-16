@@ -1,9 +1,6 @@
 defmodule GithubChallenge.GitHub.ClientTest do
   use ExUnit.Case
 
-  # import GithubChallenge.Factory
-
-  alias GithubChallenge.Error
   alias GithubChallenge.Github.Client
   alias Plug.Conn
 
@@ -62,10 +59,12 @@ defmodule GithubChallenge.GitHub.ClientTest do
 
       response = Client.get_repo_info(url, username)
 
-      expected_response = {:error, %GithubChallenge.Error{result: "user not found.", status: :not_found}}
+      expected_response =
+        {:error, %GithubChallenge.Error{result: "user not found.", status: :not_found}}
+
       assert response == expected_response
     end
-    
+
     defp endpoint_url(port), do: "http://localhost:#{port}/"
   end
 end

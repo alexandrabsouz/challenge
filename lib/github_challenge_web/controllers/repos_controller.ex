@@ -1,4 +1,4 @@
-defmodule GithubChallengeWeb.ClientController do
+defmodule GithubChallengeWeb.ReposController do
   use GithubChallengeWeb, :controller
 
   alias GithubChallengeWeb.FallbackController

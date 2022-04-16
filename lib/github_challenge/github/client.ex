@@ -7,7 +7,7 @@ defmodule GithubChallenge.Github.Client do
 
   @behaviour Behaviour
   @base_url "https://api.github.com/users/"
-  
+
   plug Tesla.Middleware.JSON
 
   def get_repo_info(url \\ @base_url, username) do
