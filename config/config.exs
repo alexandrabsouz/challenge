@@ -28,6 +28,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :github_challenge, GithubChallenge.Github.Client, github_client_adapter: GithubChallenge.Github.Client
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+

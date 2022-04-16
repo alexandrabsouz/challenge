@@ -45,7 +45,9 @@ defmodule GithubChallenge.MixProject do
       {:tesla, "~> 1.4"},
       {:hackney, "~> 1.17"},
       {:jason, ">= 1.0.0"},
-      {:credo, "~> 1.6", only: [:dev, :test]}
+      {:credo, "~> 1.6", only: [:dev, :test]},
+      {:bypass, "~> 2.1", only: :test},
+      {:mox, "~> 1.0", only: :test}
     ]
   end
 
