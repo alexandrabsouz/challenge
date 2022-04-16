@@ -7,6 +7,8 @@ defmodule GithubChallengeWeb.Router do
 
   scope "/api", GithubChallengeWeb do
     pipe_through :api
+
+    get "/:username/repos", ClientController, :show
   end
 
   # Enables LiveDashboard only for development
