@@ -7,8 +7,8 @@ defmodule GithubChallenge.Github.Client do
     plug Tesla.Middleware.BaseUrl, "https://api.github.com/users/"
     plug Tesla.Middleware.JSON
 
-    def get_repo_info(user_name) do
-        "#{user_name}/repos"
+    def get_repo_info(username) do
+        "#{username}/repos"
         |> get()
         |> handle_get()
     end
