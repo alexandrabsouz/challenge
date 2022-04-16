@@ -41,8 +41,11 @@ defmodule GithubChallenge.MixProject do
       {:telemetry_metrics, "~> 0.4"},
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.17"},
+      {:jason, ">= 1.0.0"},
+      {:credo, "~> 1.6", only: [:dev, :test]}
     ]
   end
 

@@ -10,6 +10,8 @@ use Mix.Config
 config :github_challenge,
   ecto_repos: [GithubChallenge.Repo]
 
+config :tesla, adapter: Tesla.Adapter.Hackney
+
 # Configures the endpoint
 config :github_challenge, GithubChallengeWeb.Endpoint,
   url: [host: "localhost"],
