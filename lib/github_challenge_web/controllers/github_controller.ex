@@ -11,7 +11,7 @@ defmodule GithubChallengeWeb.ClientController do
     with {:ok, body} <- GithubChallenge.get_github(username) do
       repos = 
         body
-        |> Enum.map(& Map.take(&1, ["id"]))
+        |> Enum.map(& Map.take(&1, ["id", "name", "description", "html_url", "stargazers_count"]))
 
       conn
       |> put_status(:ok)
