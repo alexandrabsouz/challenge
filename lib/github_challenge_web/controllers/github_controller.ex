@@ -9,13 +9,15 @@ defmodule GithubChallengeWeb.ClientController do
   def show(conn, params) do
     username = Map.get(params, "username")
     with {:ok, body} <- GithubChallenge.get_github(username) do
-      repos = 
-        body
-        |> Enum.map(& Map.take(&1, ["id", "name", "description", "html_url", "stargazers_count"]))
-
+      repos = repos_filter(body)
       conn
       |> put_status(:ok)
       |> render("show.json", repos: repos)
     end
+  end
+
+  defp repos_filter(body) do
+    body
+    |> Enum.map(& Map.take(&1, ["id", "name", "description", "html_url", "stargazers_count"]))
   end
 end
