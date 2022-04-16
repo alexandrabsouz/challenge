@@ -1,9 +1,9 @@
 defmodule GithubChallengeWeb.ClientView do
-    use GithubChallengeWeb, :view
+  use GithubChallengeWeb, :view
 
-    def render("show.json", %{repos: repos}) do
-        %{
-            repos: repos
-        }
-    end
+  def render("show.json", %{repos: repos}) do
+    %{
+      repos: repos
+    }
+  end
 end

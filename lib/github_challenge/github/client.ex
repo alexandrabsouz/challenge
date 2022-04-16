@@ -1,27 +1,30 @@
 defmodule GithubChallenge.Github.Client do
-    use Tesla
+  use Tesla
 
-    alias GithubChallenge.{Error, GithubMap}
-    alias Tesla.Env
+  alias GithubChallenge.Error
+  alias GithubChallenge.Github.Behaviour
+  alias Tesla.Env
 
-    plug Tesla.Middleware.BaseUrl, "https://api.github.com/users/"
-    plug Tesla.Middleware.JSON
+  @behaviour Behaviour
+  @base_url "https://api.github.com/users/"
+  
+  plug Tesla.Middleware.JSON
 
-    def get_repo_info(username) do
-        "#{username}/repos"
-        |> get()
-        |> handle_get()
-    end
+  def get_repo_info(url \\ @base_url, username) do
+    "#{url}#{username}/repos"
+    |> get()
+    |> handle_get()
+  end
 
-    defp handle_get({:ok, %Env{status: 200, body: body}}) do
-        {:ok, body}
-    end
-    
-    defp handle_get({:ok, %Env{status: 404, body: %{"message" => "Not Found"}}}) do
-        {:error, Error.build_user_not_found_error()}
-    end
-    
-    defp handle_get({:error, reason}) do
-        {:error, Error.build(:bad_request, reason)}
-    end
+  defp handle_get({:ok, %Env{status: 200, body: body}}) do
+    {:ok, body}
+  end
+
+  defp handle_get({:ok, %Env{status: 404, body: %{"message" => "Not Found"}}}) do
+    {:error, Error.build_user_not_found_error()}
+  end
+
+  defp handle_get({:error, reason}) do
+    {:error, Error.build(:bad_request, reason)}
+  end
 end
