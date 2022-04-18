@@ -6,15 +6,15 @@ defmodule Challenge.User do
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
-  @required_params [:cpf, :password, :name]
+  @required_params [:cpf, :password, :username]
 
-  @derive {Jason.Encoder, only: [:id, :name, :cpf]}
+  @derive {Jason.Encoder, only: [:id, :username, :cpf]}
 
   schema "users" do
     field :cpf, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-    field :name, :string
+    field :username, :string
 
     timestamps()
   end
@@ -28,6 +28,7 @@ defmodule Challenge.User do
     |> validate_length(:password, min: 6)
     |> validate_length(:cpf, is: 11)
     |> unique_constraint([:cpf])
+    |> unique_constraint([:username])
     |> put_password_hash()
   end
 
