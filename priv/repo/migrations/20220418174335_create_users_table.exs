@@ -11,5 +11,6 @@ defmodule Challenge.Repo.Migrations.CreateUsersTable do
     end
 
     create unique_index(:users, [:cpf])
+    create unique_index(:users, [:username])
   end
 end
