@@ -1,0 +1,18 @@
+defmodule Challenge.Users.Get do
+    alias Challenge.{Error, Repo, User}
+    alias Challenge.Github.Client
+
+    def by_id(uuid) do
+        case Repo.get(User, uuid) do
+            nil -> {:error, Error.build_user_not_found_error()}
+            user -> get_repo_github(user)
+        end
+    end
+
+    defp get_repo_github(user) do
+        username = Map.get(user, :username)
+        with {:ok, repos} = Client.get_repo_info(username) do
+            {:ok, user, repos} 
+        end
+    end
+end
