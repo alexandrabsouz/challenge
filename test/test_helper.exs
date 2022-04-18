@@ -1,4 +1,4 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(GithubChallenge.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(Challenge.Repo, :manual)
 
-Mox.defmock(GithubChallenge.GitHub.ClientMock, for: GithubChallenge.Github.Behaviour)
+Mox.defmock(Challenge.GitHub.ClientMock, for: Challenge.Github.Behaviour)

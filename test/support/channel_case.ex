@@ -1,4 +1,4 @@
-defmodule GithubChallengeWeb.ChannelCase do
+defmodule ChallengeWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule GithubChallengeWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use GithubChallengeWeb.ChannelCase, async: true`, although
+  by setting `use ChallengeWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -21,18 +21,18 @@ defmodule GithubChallengeWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       import Phoenix.ChannelTest
-      import GithubChallengeWeb.ChannelCase
+      import ChallengeWeb.ChannelCase
 
       # The default endpoint for testing
-      @endpoint GithubChallengeWeb.Endpoint
+      @endpoint ChallengeWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(GithubChallenge.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Challenge.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(GithubChallenge.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Challenge.Repo, {:shared, self()})
     end
 
     :ok

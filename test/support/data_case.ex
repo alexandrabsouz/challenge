@@ -1,4 +1,4 @@
-defmodule GithubChallenge.DataCase do
+defmodule Challenge.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule GithubChallenge.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use GithubChallenge.DataCase, async: true`, although
+  by setting `use Challenge.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,20 +18,20 @@ defmodule GithubChallenge.DataCase do
 
   using do
     quote do
-      alias GithubChallenge.Repo
+      alias Challenge.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import GithubChallenge.DataCase
+      import Challenge.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(GithubChallenge.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Challenge.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(GithubChallenge.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Challenge.Repo, {:shared, self()})
     end
 
     :ok

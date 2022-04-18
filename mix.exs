@@ -1,9 +1,9 @@
-defmodule GithubChallenge.MixProject do
+defmodule Challenge.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :github_challenge,
+      app: :challenge,
       version: "0.1.0",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule GithubChallenge.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {GithubChallenge.Application, []},
+      mod: {Challenge.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

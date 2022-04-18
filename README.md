@@ -1,4 +1,4 @@
-# GithubChallenge
+# Challenge
 
 To start your Phoenix server:
 
