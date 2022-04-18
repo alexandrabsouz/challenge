@@ -5,22 +5,23 @@ defmodule ChallengeWeb.Router do
     plug :accepts, ["json"]
   end
 
-  pipeline :auth do
-    plug ChallengeWeb.Auth.Pipeline
-  end
+  # pipeline :auth do
+  #   plug ChallengeWeb.Auth.Pipeline
+  # end
 
-  scope "/api", ChallengeWeb do
-    pipe_through [:api, :auth]
+  # scope "/api", ChallengeWeb do
+  #   pipe_through [:api, :auth]
 
-    get "/:username/repos", ClientController, :show
+  #   
 
-    resources "/users", UsersController, except: [:new, :edit, :create]
-  end
+  #   resources "/users", UsersController, except: [:new, :edit, :create]
+  # end
 
   scope "/api", ChallengeWeb do
     pipe_through :api
 
-    post "/users", UsersController, :create
+    get "/:username/repos", ClientController, :show
+    # post "/users", UsersController, :create
   end
 
   # Enables LiveDashboard only for development

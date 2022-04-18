@@ -5,7 +5,7 @@ defmodule Challenge.Repo.Migrations.CreateUsersTable do
     create table(:users) do
       add :cpf, :string
       add :password_hash, :string
-      add :name, :string
+      add :username, :string
 
       timestamps()
     end
