@@ -1,5 +1,5 @@
 defmodule Challenge do
-  alias Challenge.Github.Client
+  alias Challenge.Users.Create, as: UserCreate
 
-  defdelegate get_github(username), to: Client, as: :get_repo_info
+  defdelegate create_user(params), to: UserCreate, as: :call
 end
