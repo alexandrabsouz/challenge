@@ -47,7 +47,10 @@ defmodule Challenge.MixProject do
       {:jason, ">= 1.0.0"},
       {:credo, "~> 1.6", only: [:dev, :test]},
       {:bypass, "~> 2.1", only: :test},
-      {:mox, "~> 1.0", only: :test}
+      {:mox, "~> 1.0", only: :test},
+      {:pbkdf2_elixir, "~> 2.0"},
+      {:guardian, "~> 2.0"},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 
