@@ -21,7 +21,7 @@ defmodule Challenge.Github.Client do
   end
 
   defp handle_get({:ok, %Env{status: 404, body: %{"message" => "Not Found"}}}) do
-    {:error, Error.build_user_not_found_error()}
+    {:error, Error.build(:bad_request, "username not found")}
   end
 
   defp handle_get({:error, reason}) do
