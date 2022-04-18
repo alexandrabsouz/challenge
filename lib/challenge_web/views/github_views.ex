@@ -1,9 +1,9 @@
 defmodule ChallengeWeb.ClientView do
-  use ChallengeWeb, :view
+  # use ChallengeWeb, :view
 
-  def render("show.json", %{repos: repos}) do
-    %{
-      repos: repos
-    }
-  end
+  # def render("user.json", %{user: user}) do
+  #   %{
+  #     user: user
+  #   }
+  # end
 end

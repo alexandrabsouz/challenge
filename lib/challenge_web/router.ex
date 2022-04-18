@@ -20,7 +20,7 @@ defmodule ChallengeWeb.Router do
   scope "/api", ChallengeWeb do
     pipe_through :api
 
-    get "/:username/repos", ClientController, :show
+    get "/users/:id", UsersController, :show
     # post "/users", UsersController, :create
   end
 
