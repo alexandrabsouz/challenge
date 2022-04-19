@@ -8,12 +8,12 @@ defmodule ChallengeWeb.ReposController do
   def show(conn, params) do
     username = Map.get(params, "username")
 
-    with {:ok, body} <- Challenge.get_github(username) do
+    with {:ok, body} <- Challenge.get_repos(username) do
       repos = repos_filter(body)
 
       conn
       |> put_status(:ok)
-      |> render("show.json", repos: repos)
+      |> render("repos.json", repos: repos)
     end
   end
 
