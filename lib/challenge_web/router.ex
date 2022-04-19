@@ -20,8 +20,10 @@ defmodule ChallengeWeb.Router do
   scope "/api", ChallengeWeb do
     pipe_through :api
 
+    get "/:username/repos", ReposController, :show
+    
     get "/users/:id", UsersController, :show
-    # post "/users", UsersController, :create
+    resources "/users", UsersController, except: [:new, :edit, :create]
   end
 
   # Enables LiveDashboard only for development
