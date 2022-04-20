@@ -28,15 +28,15 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :challenge, Challenge.Github.Client, github_client_adapter: Challenge.Github.Client
+config :challenge, Challenge.Users.Create, github_client_adapter: Challenge.Github.Client
 
 config :challenge, Challenge.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
 
-config :challenge, ChallengeWeb.Auth.Pipeline,
-  module: ChallengeWeb.Auth.Guardian,
-  error_handler: ChallengeWeb.Auth.ErrorHandler
+# config :challenge, ChallengeWeb.Auth.Pipeline,
+#   module: ChallengeWeb.Auth.Guardian,
+#   error_handler: ChallengeWeb.Auth.ErrorHandler
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -18,7 +18,7 @@ config :challenge, ChallengeWeb.Endpoint,
   http: [port: 4002],
   server: false
 
-config :challenge, Challenge.Github.Client, github_client_adapter: Challenge.Github.ClientMock
+config :challenge, Challenge.Users.Create, github_client_adapter: Challenge.Github.ClientMock
 
 # Print only warnings and errors during test
 config :logger, level: :warn
