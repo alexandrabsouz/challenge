@@ -2,8 +2,8 @@ defmodule ChallengeWeb.UsersController do
     use ChallengeWeb, :controller
 
     alias Challenge.User
-    alias ChallengeWeb.FallbackController
     alias ChallengeWeb.Auth.Guardian
+    alias ChallengeWeb.FallbackController
 
 
     action_fallback FallbackController
