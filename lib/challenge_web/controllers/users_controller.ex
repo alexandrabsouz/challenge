@@ -10,7 +10,7 @@ defmodule ChallengeWeb.UsersController do
 
     def create(conn, params) do
       with {:ok, %User{} = user} <- Challenge.create_user(params),
-           {:ok, _token, _claims} <- Guardian.encode_and_sign(user) do
+           {:ok, _token, _claims} <- Guardian.encode_and_sign(user, %{}, ttl: {1, :minute}) do
         conn
         |> put_status(:created)
         |> render("create.json", user: user)

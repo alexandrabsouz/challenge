@@ -60,7 +60,13 @@ defmodule Challenge.GitHub.ClientTest do
       response = Client.get_repo_info(url, username)
 
       expected_response =
-        {:error, %Challenge.Error{result: "user not found.", status: :not_found}}
+      {
+        :error,
+        %Challenge.Error{
+          result: "username not found",
+          status: :bad_request
+        }
+      }
 
       assert response == expected_response
     end
