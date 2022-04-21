@@ -30,4 +30,11 @@ defmodule ChallengeWeb.UsersController do
         |> text("")
       end
     end
+
+    def update(conn, params) do
+      with {:ok, %User{} = user} <- Challenge.update_user(params) do
+        conn
+        |> put_status(:ok)
+        |> render("user.json", user: user)
+      end
 end
