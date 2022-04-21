@@ -5,23 +5,21 @@ defmodule ChallengeWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # pipeline :auth do
-  #   plug ChallengeWeb.Auth.Pipeline
-  # end
+  pipeline :auth do
+    plug ChallengeWeb.Auth.Pipeline
+  end
 
-  # scope "/api", ChallengeWeb do
-  #   pipe_through [:api, :auth]
+  scope "/api", ChallengeWeb do
+    pipe_through [:api, :auth]
 
-  #   
-
-  #   resources "/users", UsersController, except: [:new, :edit, :create]
-  # end
+    get "/:username/repos", ReposController, :show
+    resources "/users", UsersController, except: [:new, :edit, :create]
+  end
 
   scope "/api", ChallengeWeb do
     pipe_through :api
-
-    get "/:username/repos", ReposController, :show
-    resources "/users", UsersController, except: [:new, :edit]
+    
+    post "/users", UsersController, :create
   end
 
   if Mix.env() in [:dev, :test] do
