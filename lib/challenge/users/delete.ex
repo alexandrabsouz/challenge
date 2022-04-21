@@ -1,5 +1,5 @@
 defmodule Challenge.Users.Delete do
-  alias Rockelivery.{
+  alias Challenge.{
     Error,
     Repo,
     User
