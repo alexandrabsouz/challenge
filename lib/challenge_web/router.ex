@@ -20,6 +20,7 @@ defmodule ChallengeWeb.Router do
     pipe_through :api
     
     post "/users", UsersController, :create
+    post "/users/signin", UsersController, :sign_in
   end
 
   if Mix.env() in [:dev, :test] do
