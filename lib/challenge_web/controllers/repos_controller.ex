@@ -8,11 +8,8 @@ defmodule ChallengeWeb.ReposController do
 
   def show(conn, params) do
     username = Map.get(params, "username")
-
-    token = Guardian.Plug.current_token(conn)
-
+    
     with {:ok, body} <- Challenge.get_repos(username) do
-
       repos = repos_filter(body)
 
       new_token = conn.private[:refresh_token]
