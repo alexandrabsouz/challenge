@@ -1,8 +1,11 @@
 defmodule ChallengeWeb.Router do
   use ChallengeWeb, :router
 
+  alias ChallengeWeb.Plugs.RefreshToken
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug RefreshToken
   end
 
   pipeline :auth do

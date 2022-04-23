@@ -1,6 +1,5 @@
 defmodule Challenge.Users.Get do
     alias Challenge.{Error, Repo, User}
-    alias Challenge.Github.Client
 
     def by_id(uuid) do
         case Repo.get(User, uuid) do

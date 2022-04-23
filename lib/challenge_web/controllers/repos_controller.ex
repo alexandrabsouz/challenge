@@ -11,9 +11,11 @@ defmodule ChallengeWeb.ReposController do
     with {:ok, body} <- Challenge.get_repos(username) do
       repos = repos_filter(body)
 
+      new_token = conn.private[:refresh_token]
+
       conn
       |> put_status(:ok)
-      |> render("repos.json", repos: repos)
+      |> render("repos.json", new_token: new_token, repos: repos)
     end
   end
 
