@@ -34,6 +34,11 @@ config :challenge, Challenge.Repo,
   migration_primary_key: [type: :binary_id],
   migration_foreign_key: [type: :binary_id]
 
+# Guardian
+config :challenge, ChallengeWeb.Auth.Guardian,
+  issuer: "challenge",
+  secret_key: "5Ue2rpYy23QuKS6WrdKmArrm8rYb0SRvBehS26z3MpH/tviNboCYZ66lKBSBIfKN"
+
 config :challenge, ChallengeWeb.Auth.Pipeline,
   module: ChallengeWeb.Auth.Guardian,
   error_handler: ChallengeWeb.Auth.ErrorHandler

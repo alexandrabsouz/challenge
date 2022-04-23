@@ -1,6 +1,7 @@
 defmodule ChallengeWeb.ReposController do
   use ChallengeWeb, :controller
 
+  alias ChallengeWeb.Auth.Guardian
   alias ChallengeWeb.FallbackController
 
   action_fallback FallbackController
@@ -8,14 +9,19 @@ defmodule ChallengeWeb.ReposController do
   def show(conn, params) do
     username = Map.get(params, "username")
 
+    token = Guardian.Plug.current_token(conn)
+    token_refresh_async = Task.async(fn -> Guardian.refresh(token, ttl: {1, :minute}) end)
+
     with {:ok, body} <- Challenge.get_repos(username) do
+      {:ok, _old_stuff, {new_token, _new_claims}} = Task.await(token_refresh_async)
+
       repos = repos_filter(body)
 
       new_token = conn.private[:refresh_token]
 
       conn
       |> put_status(:ok)
-      |> render("repos.json", new_token: new_token, repos: repos)
+      |> render("repos.json", repos: repos, token: new_token)
     end
   end
 
