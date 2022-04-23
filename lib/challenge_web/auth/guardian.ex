@@ -24,4 +24,13 @@ defmodule ChallengeWeb.Auth.Guardian do
   end
 
   def authenticate(_), do: {:error, Error.build(:bad_request, "invalid or missing params")}
+
+  def refresh_token(%{"token" => token}) do
+    case refresh(token, ttl: @ttl_login) do
+      {:ok, _old_stuff, {new_token, _new_claims}} -> {:ok, new_token}
+      {:error, reason} -> {:error, Error.build(:unauthorized, reason)}
+    end
+  end
+
+  def refresh_token(_), do: {:error, Error.build(:bad_request, "invalid or missing params")}
 end
