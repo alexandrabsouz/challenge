@@ -10,10 +10,8 @@ defmodule ChallengeWeb.ReposController do
     username = Map.get(params, "username")
 
     token = Guardian.Plug.current_token(conn)
-    token_refresh_async = Task.async(fn -> Guardian.refresh(token, ttl: {1, :minute}) end)
 
     with {:ok, body} <- Challenge.get_repos(username) do
-      {:ok, _old_stuff, {new_token, _new_claims}} = Task.await(token_refresh_async)
 
       repos = repos_filter(body)
 
