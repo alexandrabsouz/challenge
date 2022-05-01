@@ -9,19 +9,20 @@ defmodule ChallengeWeb.UsersController do
     action_fallback FallbackController
 
     def create(conn, params) do
-      with {:ok, %User{} = user} <- Challenge.create_user(params),
-           {:ok, _token, _claims} <- Guardian.encode_and_sign(user, %{}, ttl: {1, :minute}) do
+      with {:ok, %User{} = user} <- Challenge.create_user(params) do
+          new_token = conn.private[:refresh_token]
         conn
         |> put_status(:created)
-        |> render("create.json", user: user)
+        |> render("create.json", user: user, token: new_token)
       end
     end
 
     def show(conn, %{"id" => id}) do
         with {:ok, %User{} = user} <- Challenge.get_user_by_id(id) do
+          new_token = conn.private[:refresh_token]
           conn
           |> put_status(:ok)
-          |> render("user.json", user: user)
+          |> render("user.json", user: user, token: new_token)
         end
     end
 
@@ -35,9 +36,10 @@ defmodule ChallengeWeb.UsersController do
 
     def update(conn, params) do
       with {:ok, %User{} = user} <- Challenge.update_user(params) do
+        new_token = conn.private[:refresh_token]
         conn
         |> put_status(:ok)
-        |> render("user.json", user: user)
+        |> render("user.json", user: user, token: new_token)
       end
     end
 

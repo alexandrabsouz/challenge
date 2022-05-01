@@ -1,14 +1,12 @@
 defmodule ChallengeWeb.ReposController do
   use ChallengeWeb, :controller
-
-  alias ChallengeWeb.Auth.Guardian
   alias ChallengeWeb.FallbackController
 
   action_fallback FallbackController
 
   def show(conn, params) do
     username = Map.get(params, "username")
-    
+
     with {:ok, body} <- Challenge.get_repos(username) do
       repos = repos_filter(body)
 
