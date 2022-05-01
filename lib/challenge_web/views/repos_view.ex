@@ -4,7 +4,7 @@ defmodule ChallengeWeb.ReposView do
   def render("repos.json", %{repos: repos, token: token}) do
     %{
       repos: repos,
-       token: token
+      token: token
     }
   end
 end

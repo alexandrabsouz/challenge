@@ -1,5 +1,5 @@
 defmodule ChallengeWeb.Plugs.RefreshToken do
-    import Plug.Conn
+  import Plug.Conn
 
   alias ChallengeWeb.Auth.Guardian
 

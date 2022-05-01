@@ -21,7 +21,7 @@ defmodule ChallengeWeb.Router do
 
   scope "/api", ChallengeWeb do
     pipe_through :api
-    
+
     post "/users", UsersController, :create
     post "/users/signin", UsersController, :sign_in
   end

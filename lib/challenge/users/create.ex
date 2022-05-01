@@ -22,4 +22,4 @@ defmodule Challenge.Users.Create do
   end
 end
 
-#user_params = %{"cpf" => "29534291072" , "password" => "teste1234", "username" => "cccvcvcvcvcvcvcvcv"}
+# user_params = %{"cpf" => "29534291072" , "password" => "teste1234", "username" => "cccvcvcvcvcvcvcvcv"}
