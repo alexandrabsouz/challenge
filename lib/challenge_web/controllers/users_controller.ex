@@ -5,7 +5,6 @@ defmodule ChallengeWeb.UsersController do
     alias ChallengeWeb.Auth.Guardian
     alias ChallengeWeb.FallbackController
 
-
     action_fallback FallbackController
 
     def create(conn, params) do
